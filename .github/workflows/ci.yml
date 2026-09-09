@@ -1,0 +1,52 @@
+name: Test des Merge
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Verifie le backend et le frontend
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checker Code de Base
+        uses: actions/checkout@v4
+
+      - name: Setup Environment Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'backend/package-lock.json'
+
+      - name: Installer les Dependences
+        run: npm ci
+        working-directory: ./backend
+
+      - name: Generer les artifacts Prisma Client
+        run: npx prisma generate
+        working-directory: ./backend
+
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checker Code de Base
+        uses: actions/checkout@v4
+
+      - name: Setup Environment Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
+      - name: Installer les Dependences
+        run: npm ci
+        working-directory: ./frontend
+
+      - name: Check pour Compiler et Build
+        run: npx tsc -p tsconfig.json --noEmit --noUnusedLocals false --noUnusedParameters false && npx vite build
+        working-directory: ./frontend

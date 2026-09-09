@@ -1,0 +1,20 @@
+name: "💥 Triage Rapid et Trackeur de Bug"
+description: Log les etat de cette application lorque briser ou les erreurs de types.
+title: "[BUG] "
+labels: ["bug", "priorite elever"]
+body:
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: Trace Erreur ou Comportement Observer
+      placeholder: Coller le block de terminal ou les erreur de compilation ici.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: runtime
+    attributes:
+      label: Evironnement ou le probleme a ete rencontrer
+      options:
+        - "Github Actions Containeur Cloud"
+        - "Environnement de la machine local"

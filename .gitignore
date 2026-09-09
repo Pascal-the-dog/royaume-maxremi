@@ -3,3 +3,22 @@ node_modules/
 generated/
 dist/
 _schema.prisma
+
+# Kate text editor pattern
+*.kate-swp
+*~
+
+# OS et logs
+*.log
+*-debug.log*
+*-error.log*
+
+# fichiers d'environnement
+.env.local
+.env.*.local
+
+# Builds et diagnositcs
+dist-srr/
+build/
+.cache/
+*.tsbuildinfo
