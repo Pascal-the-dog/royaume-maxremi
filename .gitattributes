@@ -1,0 +1,23 @@
+# Renforce les fin de lignes en LF
+* text=auto eol=lf
+
+# Traite le code come du text
+*.ts text
+*.tsx text
+*.json text
+*.md text
+*.html text
+*.css text
+
+*.prisma text
+*.rest text
+
+*.example text
+.gitignore text
+
+**/package-lock.json -text
+
+# Ignore les documents generer afin de garder les statistiques github propre
+**/prisma/client/** linguist-generated
+**/documentation/** linguist-documentation
+

@@ -1,0 +1,42 @@
+name: "🚀 Planneur pour les Features"
+description: Template pour integrer des plans pour des nouvelles features
+title: "[FEATURE] "
+labels: ["nouveau", "todo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Blueprint pour les nouveaux ajout ou plan four des features
+        Utiliser ce formulaire pour forcer l'isolement des taches avant de coder sans plans
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Architecture ou Workspace Cible
+      description: Quel sous-dossier la nouvelle adition cible?
+      options:
+      - "Frontend"
+      - "Backend"
+      - "devop / infrastructure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Objectif et Context
+      placeholder: Quel est le userstory ou le probleme la nouvelle addition addresse?
+    validations:
+      required: true
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Definition of Done (DoD)
+      description: Quelles sont les conditions strictes pour declarer cette tache terminee?
+      placeholder: |
+        - [ ] Le code compile localement sans erreurs TypeScript.
+        - [ ] Les tests ou pipelines CI sur GitHub passent au vert.
+        - [ ] (Optionnel) Les modeles Prisma sont mis a jour si necessaire.
+    validations:
+      required: true
